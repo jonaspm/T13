@@ -59,15 +59,17 @@ $(document).ready(function () {
 	$('#nuevoEstudiante').on('show.bs.modal', function (event) {
 		var boton = $(event.relatedTarget) // Boton
   		editarId = boton.data('is');
+		var modal = $(this);
 
 		if (editarId) {
-			var modal = $(this);
 			editarId = boton.parent().prevAll(':eq(5)').text();
 			inputs[0].val(boton.parent().prevAll(':eq(4)').text());
 			inputs[2].val(boton.parent().prevAll(':eq(2)').text());
 			inputs[1].val(boton.parent().prevAll(':eq(3)').text());
 			inputs[3].val(boton.parent().prevAll(':eq(1)').text());
 			modal.find('.modal-title').text('Editar Estudiante #'+editarId);
+		} else {
+			modal.find('.modal-title').text('Nuevo Estudiante');
 		}
 	});
 
