@@ -2,6 +2,10 @@
 	float:right;
 }
 
+body > div.container {
+	min-width: 390px;
+}
+
 small {
 	display: none;
 }
