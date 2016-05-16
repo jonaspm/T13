@@ -86,16 +86,23 @@ $(document).ready(function () {
 		var valid = true;
 
 		$.each(inputs, function (index, control) {
-				if (!control.val()) {
+			// Validar Matrícula
+			if (index == 0)
+				if (isNaN(control.val()) || control.val().length < 6) {
 					control.parent().addClass('has-error');
 					control.next('small').css('display', 'inline');
-					valid = false;
-				} else {
-					control.parent().removeClass('has-error');
-					control.next('small').css('display', 'none');
+					return valid = false;
 				}
+			// Validar el resto de los controles del formulario
+			if (!control.val()) {
+				control.parent().addClass('has-error');
+				control.next('small').css('display', 'inline');
+				return valid = false;
+			} else {
+				control.parent().removeClass('has-error');
+				control.next('small').css('display', 'none');
 			}
-		);
+		});
 
 		if (valid) {
 			// Crear el objeto estudiante y asignar propiedades
